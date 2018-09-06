@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript">
+    </script>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div id="map" class="map"></div>
+    
+    <div id="infoPoint" class="infoPoint">
+        <div style="display: flex;"  class="infoHeader">
+            <div id="ipAddr"></div>
+            <div style="margin-left: 5px; cursor:pointer;" id="closeInfoPoint">x</div>
+        </div>
+        <div><b>ВАШ ОТЗЫВ</b></div>
+        <div id="rvsList" style="height: 100px;"></div>
+        <div>
+            <input type="text" placeholder="Ваше имя" id="rvUserName" class="rvInput">
+            <input type="text" placeholder="Укажите место" id="rvPlaceName" class="rvInput">
+            <textarea name="" rows="10" placeholder="Поделитесь впечатлениями" id="rvText" class="rvInput"></textarea>
+        </div>
+        <div>
+            <input type="button" name="" id="save" value="Добавить">
+        </div>
+    </div>
+
+    <script src="go.js" type="text/javascript"></script>
+</body>
+</html>
