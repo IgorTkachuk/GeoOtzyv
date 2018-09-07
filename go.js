@@ -72,6 +72,7 @@ function init(){
 
         infoPoint.style.left = `${evtDOM.clientX}px`;
         infoPoint.style.top = `${evtDOM.clientY}px`;
+        putInOrderCords();
         rvsList.innerHTML = emptyRvsListPlaceholder;
         infoPoint.style.display = 'block';
      });
@@ -122,6 +123,7 @@ save.addEventListener('click', (e) => {
 map.addEventListener('click', (e) => {
     infoPoint.style.left = `${e.clientX}px`;
     infoPoint.style.top = `${e.clientY}px`;
+    putInOrderCords();
 });
 
 infoPointCloseBtn.addEventListener('click', (e) => {
@@ -171,4 +173,34 @@ function resetInfoPoint() {
     rvUserName.value = '';
     rvPlaceName.value = '';
     rvText.value = '';
+}
+
+function putInOrderCords(){
+    const ipBounding = infoPoint.getBoundingClientRect(),
+        left = ipBounding.left,
+        top = ipBounding.top,
+        right = ipBounding.right,
+        bottom = ipBounding.bottom;
+
+    const clientWidth = document.documentElement.clientWidth,
+        clientHeight = document.documentElement.clientHeight;
+
+    const x = parseInt(infoPoint.style.left),
+        y = parseInt(infoPoint.style.top);
+
+    if (left < 0) {
+        infoPoint.style.left = '10px';
+    }
+
+    if (top < 0) {
+        infoPoint.style.top = '10px';
+    }
+
+    if (right > clientWidth) {
+        infoPoint.style.left = `${x - (right - clientWidth) - 10 }px`;
+    }
+
+    if (bottom > clientHeight) {
+        infoPoint.style.top = `${y - (bottom - clientHeight) - 10}px`;
+    }
 }
